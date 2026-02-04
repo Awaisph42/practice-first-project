@@ -1,56 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>QR Welcome</title>
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
   <style>
-    body{
-      font-family: Arial;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+    body {
+      margin: 0;
       height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
       text-align: center;
     }
-    #welcome{
-      display: none;
+    #welcome {
       font-size: 40px;
+      display: none;
     }
   </style>
 </head>
-
 <body>
-  <!-- QR Section -->
-  <div id="qrSection">
-    <h2>Scan This QR Code</h2>
-    <div id="qrcode"></div>
-  </div>
 
-  <!-- Welcome Section -->
-  <div id="welcome">
-    <h1>WELCOME</h1>
-  </div>
+<div id="qr"></div>
+<div id="welcome">WELCOME</div>
 
-  <script>
-    // ✅ GitHub Pages URL set
-    const githubURL = "https://awaisph42.github.io/practice-first-project/?welcome";
+<script>
+  // 🔒 Tumhara confirmed GitHub Pages URL
+  const SITE_URL = "https://awaisph42.github.io/practice-first-project/?welcome";
 
-    // Agar URL me ?welcome hai → WELCOME show karo
-    if (window.location.href.includes("welcome")) {
-      document.getElementById("qrSection").style.display = "none";
-      document.getElementById("welcome").style.display = "block";
-    } else {
-      // QR code generate karo
-      new QRCode(document.getElementById("qrcode"), {
-        text: githubURL,
-        width: 200,
-        height: 200
-      });
-    }
-  </script>
+  // Agar ?welcome hai → WELCOME dikhao
+  if (window.location.search.includes("welcome")) {
+    document.getElementById("qr").style.display = "none";
+    document.getElementById("welcome").style.display = "block";
+  } else {
+    // Warna QR dikhao
+    new QRCode(document.getElementById("qr"), {
+      text: SITE_URL,
+      width: 220,
+      height: 220
+    });
+  }
+</script>
+
 </body>
 </html>
-
-
