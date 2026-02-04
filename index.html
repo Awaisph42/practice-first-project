@@ -1,47 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
-  <title>QR Welcome</title>
+  <title>QR Project</title>
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+
   <style>
-    body {
-      margin: 0;
+    body{
+      font-family: Arial;
       height: 100vh;
+      margin: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: Arial, sans-serif;
       text-align: center;
     }
-    #welcome {
-      font-size: 40px;
+    #welcome{
       display: none;
+      font-size: 40px;
+      font-weight: bold;
     }
   </style>
 </head>
+
 <body>
 
 <div id="qr"></div>
 <div id="welcome">WELCOME</div>
 
 <script>
-  // 🔒 Tumhara confirmed GitHub Pages URL
-  const SITE_URL = "https://awaisph42.github.io/practice-first-project/?welcome";
+  // 🔒 Tumhara project URL
+  const URL = "https://awaisph42.github.io/practice-first-project/?welcome";
 
-  // Agar ?welcome hai → WELCOME dikhao
+  // Mobile scan case
   if (window.location.search.includes("welcome")) {
     document.getElementById("qr").style.display = "none";
     document.getElementById("welcome").style.display = "block";
-  } else {
-    // Warna QR dikhao
+  }
+  // Laptop case
+  else {
     new QRCode(document.getElementById("qr"), {
-      text: SITE_URL,
-      width: 220,
-      height: 220
+      text: URL,
+      width: 250,
+      height: 250
     });
   }
 </script>
 
 </body>
 </html>
+
+
